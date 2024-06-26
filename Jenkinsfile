@@ -1,9 +1,9 @@
 pipeline{
     agent any
-   #tools {
-    #        ansible 'ansible'
-     #       terraform 'terraform'
-    #}
+   //tools {
+   //        ansible 'ansible'
+   //       terraform 'terraform'
+  //}
 
     environment {
         PATH=sh(script:"echo $PATH:/usr/local/bin", returnStdout:true).trim()
