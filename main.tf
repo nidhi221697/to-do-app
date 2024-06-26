@@ -25,7 +25,7 @@ variable "user" {
 }
 
 resource "aws_instance" "managed_nodes" {
-  ami = "ami-079db87dc4c10ac91"
+  ami = "ami-04f8d7ed2f1a54b14"
   count = 3
   instance_type = "t2.micro"
   key_name = "terraform"  # change with your pem file
