@@ -8,12 +8,12 @@ terraform {
   backend "s3" {
     bucket = "jenkins-project-backend-raife"
     key = "backend/tf-backend-jenkins.tfstate"
-    region = "us-east-1"
+    region = "ap-south-1"
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-south-1"
 }
 
 variable "tags" {
