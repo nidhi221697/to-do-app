@@ -124,5 +124,5 @@ pipeline{
       //      echo 'Deleting Terraform Stack due to the Failure'
       //          sh 'terraform destroy --auto-approve'
       //  }
-  //  }     
+    }     
 }
