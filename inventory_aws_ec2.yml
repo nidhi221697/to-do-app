@@ -1,6 +1,6 @@
 plugin: aws_ec2
 regions:
-  - "us-east-1"
+  - "ap-south-1"
 filters:
   tag:stack: ansible_project
 keyed_groups:
