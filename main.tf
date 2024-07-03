@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "jenkins-project-backend-raife"
+    bucket = "jenkins-project-backend-raife1"
     key = "backend/tf-backend-jenkins.tfstate"
     region = "ap-south-1"
   }
