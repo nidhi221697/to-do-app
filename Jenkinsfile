@@ -86,7 +86,7 @@ pipeline{
                 sh 'ls -l'
                 sh 'ansible --version'
                 sh 'ansible-inventory --graph'
-                //start
+              /*  //start
                 sh 'echo Installation'
                 sh 'sudo yum update'
                 sh sudo 'yum install docker.io'
@@ -94,8 +94,8 @@ pipeline{
                 sh sudo 'systemctl enable docker'
                 sh sudo 'usermod -aG docker $USER'
                 sh 'docker run -d -p 5000:5000 --name nodeapi nodeimage:latest'
-                
-              //  ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
+                */
+                ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
              }
         }
      /*   stage('Destroy the infrastructure'){
