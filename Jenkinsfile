@@ -86,10 +86,19 @@ pipeline{
                 sh 'ls -l'
                 sh 'ansible --version'
                 sh 'ansible-inventory --graph'
-                ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
+                //start
+                sh 'echo Installation'
+                sh 'sudo yum update'
+                sh sudo 'yum install docker.io'
+                sh sudo 'systemctl start docker'
+                sh sudo 'systemctl enable docker'
+                sh sudo 'usermod -aG docker $USER'
+                sh 'docker run -d -p 5000:5000 --name nodeapi nodeimage:latest'
+                
+              //  ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
              }
         }
-        stage('Destroy the infrastructure'){
+     /*   stage('Destroy the infrastructure'){
           steps{
                 timeout(time:5, unit:'DAYS'){
                     input message:'Approve terminate'
@@ -124,5 +133,5 @@ pipeline{
             echo 'Deleting Terraform Stack due to the Failure'
                 sh 'terraform destroy --auto-approve'
         } 
-    }     
+    }    */ 
 }
