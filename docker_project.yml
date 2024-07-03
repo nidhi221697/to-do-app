@@ -3,7 +3,7 @@
   become: true
   vars:
     aws_region: ap-south-1
-    ecr_registry: 009736932126.dkr.ecr.us-east-1.amazonaws.com
+    ecr_registry: 381492075097.dkr.ecr.us-east-1.amazonaws.com
   tasks:
     - name: update all packages
       ansible.builtin.yum:
@@ -85,7 +85,7 @@
   become: true
   vars:
     container_name: raife_postgre
-    image_name: 628937233763.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:postgre      
+    image_name: 381492075097.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:postgre      
      #009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:postgre
   tasks:
     - name: remove postgre container
@@ -116,7 +116,7 @@
   become: true
   vars:
     container_name: raife_nodejs
-    image_name: 009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
+    image_name: 381492075097.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
     #009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
   tasks:
     - name: remove postgre container
@@ -143,7 +143,7 @@
   become: true
   vars:
     container_name: raife_react
-    image_name: 628937233763.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:postgre
+    image_name: 381492075097.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:postgre
     # 009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:react
   tasks:
     - name: remove postgre container
