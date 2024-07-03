@@ -89,7 +89,7 @@ pipeline{
                 ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
              }
         }
-      /*  stage('Destroy the infrastructure'){
+        stage('Destroy the infrastructure'){
           steps{
                 timeout(time:5, unit:'DAYS'){
                     input message:'Approve terminate'
@@ -123,6 +123,6 @@ pipeline{
                 """
             echo 'Deleting Terraform Stack due to the Failure'
                 sh 'terraform destroy --auto-approve'
-        } */
+        } 
     }     
 }
