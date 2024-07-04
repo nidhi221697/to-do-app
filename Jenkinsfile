@@ -95,7 +95,15 @@ pipeline{
                 sh sudo 'usermod -aG docker $USER'
                 sh 'docker run -d -p 5000:5000 --name nodeapi nodeimage:latest'
                 */
-                ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
+              //  https://github.com/jcsirot/ansible-plugin/issues/13
+                ansiblePlaybook(
+                  playbook: '/var/lib/jenkins/workspace/to-do-app/docker_project.yml',
+                  inventory: '/var/lib/jenkins/workspace/to-do-app/inventory_aws_ec2.yml',
+                  disableHostKeyChecking: true,
+                  credentialsId: 'terraform'
+                  )
+                
+               // ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
              }
         }
      /*   stage('Destroy the infrastructure'){
