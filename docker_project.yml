@@ -116,7 +116,7 @@
   become: true
   vars:
     container_name: raife_nodejs
-    image_name: 381492075097.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
+    image_name: 381492075097.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
     #009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
   tasks:
     - name: remove postgre container
