@@ -95,13 +95,14 @@ pipeline{
                 sh sudo 'usermod -aG docker $USER'
                 sh 'docker run -d -p 5000:5000 --name nodeapi nodeimage:latest'
                 */
-              //  https://github.com/jcsirot/ansible-plugin/issues/13
+              /*  https://github.com/jcsirot/ansible-plugin/issues/13
                 ansiblePlaybook(
                   playbook: '/var/lib/jenkins/workspace/to-do-app/docker_project.yml',
                   inventory: '/var/lib/jenkins/workspace/to-do-app/inventory_aws_ec2.yml',
                   disableHostKeyChecking: true,
                   credentialsId: 'terraform'
-                  )
+                  )*/
+                ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/to-do-app/inventory_aws_ec2.yml', playbook: '/var/lib/jenkins/workspace/to-do-app/docker_project.yml', vaultTmpPath: ''
                 
                // ansiblePlaybook credentialsId: 'terraform', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory_aws_ec2.yml', playbook: 'docker_project.yml'
              }
