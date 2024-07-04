@@ -3,7 +3,7 @@
   become: true
   vars:
     aws_region: ap-south-1
-    ecr_registry: 381492075097.dkr.ecr.us-east-1.amazonaws.com
+    ecr_registry: 381492075097.dkr.ecr.ap-south-1.amazonaws.com
   tasks:
     - name: update all packages
       ansible.builtin.yum:
