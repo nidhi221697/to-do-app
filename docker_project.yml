@@ -86,7 +86,6 @@
   vars:
     container_name: raife_postgre
     image_name: 381492075097.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:postgre      
-     #009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:postgre
   tasks:
     - name: remove postgre container
       community.docker.docker_container:
@@ -117,7 +116,6 @@
   vars:
     container_name: raife_nodejs
     image_name: 381492075097.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
-    #009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:nodejs
   tasks:
     - name: remove postgre container
       community.docker.docker_container:
@@ -144,7 +142,6 @@
   vars:
     container_name: raife_react
     image_name: 381492075097.dkr.ecr.ap-south-1.amazonaws.com/raife-repo/raife-todo-app:react
-    # 009736932126.dkr.ecr.us-east-1.amazonaws.com/raife-repo/raife-todo-app:react
   tasks:
     - name: remove postgre container
       community.docker.docker_container:
