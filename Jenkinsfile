@@ -83,6 +83,7 @@ pipeline{
         stage('Deploy the App') {
             steps {
                 echo 'Deploy the App'
+                sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin "$ECR_REGISTRY"'
                 sh 'ls -l'
                 sh 'ansible --version'
                 sh 'ansible-inventory --graph'
@@ -96,7 +97,7 @@ pipeline{
                 sh 'docker run -d -p 5000:5000 --name nodeapi nodeimage:latest'
                 */
               //  https://github.com/jcsirot/ansible-plugin/issues/13
-                sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin "$ECR_REGISTRY"'
+                //sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin "$ECR_REGISTRY"'
                 ansiblePlaybook(
                   playbook: '/var/lib/jenkins/workspace/to-do-app/docker_project.yml',
                   inventory: '/var/lib/jenkins/workspace/to-do-app/inventory_aws_ec2.yml',
