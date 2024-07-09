@@ -99,7 +99,7 @@ resource "aws_lb" "alb" {
   security_groups    = [aws_security_group.allow_tls.id]
   subnets            = [subnet-039995cb1b318ab52, subnet-0ac549a9eae38a567]
 //[for subnet in aws_subnet.public : subnet.id]
-
+//https://github.com/ranjit4github/aws_3tier_architecture_terraform/blob/master/alb.tf
   enable_deletion_protection = false
 
   tags = {
@@ -144,5 +144,37 @@ resource "aws_lb_listener" "albl" {
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.albtg.arn
+  }
+}
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
   }
 }
