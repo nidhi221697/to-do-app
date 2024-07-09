@@ -104,7 +104,7 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.tf-sec-gr.id]
-  subnets            = [for subnet in aws_subnet.public : subnet.id]
+//  subnets            = [for subnet in aws_subnet.public : subnet.id]
 //[subnet-039995cb1b318ab52, subnet-0ac549a9eae38a567]
 //[for subnet in aws_subnet.public : subnet.id]
 //https://github.com/ranjit4github/aws_3tier_architecture_terraform/blob/master/alb.tf
