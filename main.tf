@@ -119,16 +119,17 @@ subnets = [
   }
 }
 //default vpc
-resource "aws_vpc" "main" {
-  default ="vpc-0fe8f589e4f292e23"
-}
+resource "aws_default_vpc" "main" {}
+//resource "aws_vpc" "main" {
+  //default ="vpc-0fe8f589e4f292e23"
+//}
 //Target Group
 resource "aws_lb_target_group" "albtg" {
   name     = "tf-example-lb-tg"
   port     = 80
   protocol = "HTTP"
   target_type = "instance"
-  vpc_id   = aws_vpc.main.id
+  vpc_id   = aws_default_vpc.main.id
 
   health_check {    
     healthy_threshold   = 3    
@@ -164,4 +165,8 @@ resource "aws_default_subnet" "default_subnet_a" {
 
 resource "aws_default_subnet" "default_subnet_b" {
   availability_zone = var.availability_zones[1]
+}
+variable "availability_zones" {
+  description = "ap-south-1 AZs"
+  type        = list(string)
 }
