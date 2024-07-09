@@ -79,6 +79,17 @@ resource "aws_security_group" "tf-sec-gr" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
 }
 
 output "react_ip" {
@@ -96,7 +107,7 @@ resource "aws_lb" "alb" {
   name               = "test-lb-tf"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_tls.id]
+  security_groups    = [aws_security_group.tf-sec-gr.id]
   subnets            = [subnet-039995cb1b318ab52, subnet-0ac549a9eae38a567]
 //[for subnet in aws_subnet.public : subnet.id]
 //https://github.com/ranjit4github/aws_3tier_architecture_terraform/blob/master/alb.tf
