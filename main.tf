@@ -97,7 +97,8 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow_tls.id]
-  subnets            = [for subnet in aws_subnet.public : subnet.id]
+  subnets            = [subnet-039995cb1b318ab52, subnet-0ac549a9eae38a567]
+//[for subnet in aws_subnet.public : subnet.id]
 
   enable_deletion_protection = false
 
@@ -107,6 +108,7 @@ resource "aws_lb" "alb" {
 }
 //default vpc
 resource "aws_vpc" "main" {
+  default ="vpc-0fe8f589e4f292e23"
 }
 //Target Group
 resource "aws_lb_target_group" "albtg" {
