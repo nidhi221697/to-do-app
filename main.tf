@@ -168,5 +168,6 @@ resource "aws_default_subnet" "default_subnet_b" {
 }
 variable "availability_zones" {
   description = "ap-south-1 AZs"
-  type        = list(string)
+  default = ["ap-south-1a", "ap-south-1b"]
+  //type        = list(string)
 }
