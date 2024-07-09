@@ -109,7 +109,11 @@ resource "aws_lb" "alb" {
 //[for subnet in aws_subnet.public : subnet.id]
 //https://github.com/ranjit4github/aws_3tier_architecture_terraform/blob/master/alb.tf
   enable_deletion_protection = false
-
+subnets = [
+    "${aws_default_subnet.default_subnet_a.id}",
+    "${aws_default_subnet.default_subnet_b.id}",
+ //   "${aws_default_subnet.default_subnet_c.id}"
+  ]
   tags = {
     Environment = "test"
   }
@@ -153,4 +157,11 @@ resource "aws_lb_listener" "albl" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.albtg.arn
   }
+}
+resource "aws_default_subnet" "default_subnet_a" {
+  availability_zone = var.availability_zones[0]
+}
+
+resource "aws_default_subnet" "default_subnet_b" {
+  availability_zone = var.availability_zones[1]
 }
