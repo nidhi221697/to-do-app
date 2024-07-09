@@ -126,7 +126,7 @@ resource "aws_lb_target_group" "albtg" {
 
 resource "aws_lb_target_group_attachment" "front_end" {
   target_group_arn = aws_lb_target_group.albtg.arn
-  target_id        = aws_instance.web[count.index].id
+  target_id        = aws_instance.managed_nodes[count.index].id
   port             = 80
   count = 2
 }
